@@ -3,6 +3,7 @@ plugins {
   id(Plugins.BuildPlugins.kotlinAndroid)
   id(Plugins.BuildPlugins.mavenPublish)
   jacoco
+  id(Plugins.BuildPlugins.parcelize)
 }
 
 afterEvaluate {
@@ -84,6 +85,7 @@ dependencies {
 
   coreLibraryDesugaring(Dependencies.desugarJdkLibs)
 
+  implementation(Dependencies.Androidx.activityKtx)
   implementation(Dependencies.Androidx.appCompat)
   implementation(Dependencies.Androidx.fragmentKtx)
   implementation(Dependencies.HapiFhir.validation) {
@@ -97,6 +99,13 @@ dependencies {
   implementation(Dependencies.Lifecycle.viewModelKtx)
   implementation(Dependencies.material)
   implementation(Dependencies.flexBox)
+  implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+  implementation("com.google.mlkit:barcode-scanning:16.1.1")
+
+  // Object feature and model
+  implementation("com.google.mlkit:object-detection:16.2.3")
+  // Custom model
+  implementation("com.google.mlkit:object-detection-custom:16.3.1")
 
   testImplementation(Dependencies.AndroidxTest.core)
   testImplementation(Dependencies.junit)
